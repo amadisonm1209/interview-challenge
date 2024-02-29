@@ -5,7 +5,7 @@ We do ask that you complete this project in Javascript/Typescript, though you ma
 ### Prerequisites
 - [Docker](https://www.docker.com/products/docker-desktop/)
 
-First, make sure you have docker installed and that you have it running, then run the `docker-compose up -d` command in the root directory of this project. A database will spin up when running this command. To modify what is added to that database upon initialization, check the `init-db.sql` file. For credentials to connect to the database, take a look at the included .env file. Make sure you can connect to the database, and reach out if you need help.
+First, make sure you have docker installed and that you have it running, then run the `docker compose up -d` command in the root directory of this project. A database will spin up when running this command. To modify what is added to that database upon initialization, check the `init-db.sql` file. For credentials to connect to the database, take a look at the included .env file. Make sure you can connect to the database, and reach out if you need help.
 
 ### The Challenge
 
