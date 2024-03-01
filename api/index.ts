@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import pkg, { Pool, PoolConfig } from 'pg';
+import pkg, { Pool, PoolConfig } from "pg";
 import { router } from "./accounts/controller";
 
 dotenv.config();
@@ -32,14 +32,14 @@ let pool: Pool;
 const getDatabasePool = () => {
   if (!pool) {
     const pgConfig: PoolConfig = {
-      host: 'localhost',
+      host: "localhost",
       port: 5432,
       database: `${process.env.POSTGRES_DB}`,
       user: `${process.env.POSTGRES_USER}`,
       password: `${process.env.POSTGRES_PASSWORD}`,
     };
 
-      initialize(pgConfig)
+    initialize(pgConfig);
   }
 
   return pool;
@@ -51,8 +51,8 @@ const initialize = (pgDbConfig: PoolConfig) => {
 
 export const dbQuery = async (sql: string, params: (number | string)[]) => {
   try {
-      return await getDatabasePool().query(sql, params);
+    return await getDatabasePool().query(sql, params);
   } catch (error) {
-      throw error;
+    throw error;
   }
 };

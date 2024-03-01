@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -12,21 +12,21 @@ export default function Page() {
 
     try {
       const res = await fetch(
-          `http://localhost:5000/api/accounts/${accountNumber}`,
-          {
-              method: 'GET',
-          }
+        `http://localhost:5000/api/accounts/${accountNumber}`,
+        {
+          method: "GET",
+        }
       );
 
       if (res.status === 200) {
         router.push(`/account/?account=${accountNumber}`);
       } else {
-        throw new Error('Account Not Found, Please Try Again');
+        throw new Error("Account Not Found, Please Try Again");
       }
     } catch (err: any) {
-        setError(err.message);
+      setError(err.message);
     }
-  }
+  };
 
   return (
     <>
@@ -45,7 +45,11 @@ export default function Page() {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Account Number
           </label>
-          {error && <h2 className="block text-red-600 text-sm font-bold mb-2">{error}</h2>}
+          {error && (
+            <h2 className="block text-red-600 text-sm font-bold mb-2">
+              {error}
+            </h2>
+          )}
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="account-number"
@@ -57,7 +61,7 @@ export default function Page() {
         <button
           type="button"
           className="bg-blue-500 inline-block rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#6e9ce6] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-          onClick={handleSubmit}        
+          onClick={handleSubmit}
         >
           Submit
         </button>

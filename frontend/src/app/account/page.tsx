@@ -15,8 +15,8 @@ export default function Page() {
   const accountParam = useSearchParams();
   const accountNumber = accountParam.get("account");
   const [user, setUser] = useState<AccountInfo>();
-  const [action, setActionSelection] = useState<string>('check');
-  const [selection, setSelection] = useState<string>('');
+  const [action, setActionSelection] = useState<string>("check");
+  const [selection, setSelection] = useState<string>("");
 
   const getUserAccountInfo = async (accountId: number) => {
     try {
@@ -40,7 +40,7 @@ export default function Page() {
 
   const handleSelection = () => {
     setSelection(action);
-  }
+  };
 
   return (
     <div className="min-h-screen flex-col items-center justify-between p-24">
@@ -64,9 +64,13 @@ export default function Page() {
       >
         Enter
       </button>
-      {selection === 'check' && user && <BalanceCard amount={user.amount} />}
-      {selection === 'deposit' && accountNumber && <DepositForm accountNumber={parseInt(accountNumber)} />}
-      {selection === 'withdrawal' && accountNumber && <WithdrawalForm accountNumber={parseInt(accountNumber)}/>}
+      {selection === "check" && user && <BalanceCard amount={user.amount} />}
+      {selection === "deposit" && accountNumber && (
+        <DepositForm accountNumber={parseInt(accountNumber)} />
+      )}
+      {selection === "withdrawal" && accountNumber && (
+        <WithdrawalForm accountNumber={parseInt(accountNumber)} />
+      )}
     </div>
   );
 }
