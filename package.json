@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Interview-Challenge",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only api/index.ts",
     "test": "npm run test"
