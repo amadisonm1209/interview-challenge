@@ -9,6 +9,7 @@ type AccountInfo = {
   accountName: string;
   amount: number;
   accountType: string;
+  creditLimit: number | null;
 };
 
 export default function Page() {
@@ -27,7 +28,6 @@ export default function Page() {
         }
       );
       const data = await res.json();
-      console.log(data);
       setUser(data);
     } catch (err) {
       console.log(err);
@@ -36,7 +36,7 @@ export default function Page() {
 
   useEffect(() => {
     if (accountNumber) getUserAccountInfo(parseInt(accountNumber));
-  }, [accountNumber]);
+  });
 
   const handleSelection = () => {
     setSelection(action);
@@ -65,11 +65,20 @@ export default function Page() {
         Enter
       </button>
       {selection === "check" && user && <BalanceCard amount={user.amount} />}
-      {selection === "deposit" && accountNumber && (
-        <DepositForm accountNumber={parseInt(accountNumber)} />
+      {selection === "deposit" && accountNumber && user && (
+        <DepositForm
+          accountNumber={parseInt(accountNumber)}
+          accountType={user.accountType}
+          accountAmount={user.amount}
+        />
       )}
-      {selection === "withdrawal" && accountNumber && (
-        <WithdrawalForm accountNumber={parseInt(accountNumber)} />
+      {selection === "withdrawal" && accountNumber && user && (
+        <WithdrawalForm
+          accountNumber={parseInt(accountNumber)}
+          accountType={user.accountType}
+          accountAmount={user.amount}
+          creditLimit={user.creditLimit}
+        />
       )}
     </div>
   );
