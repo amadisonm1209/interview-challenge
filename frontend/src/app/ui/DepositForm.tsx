@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function DepositForm({
@@ -13,7 +12,6 @@ export default function DepositForm({
 }) {
   const [depositAmount, setDepositAmount] = useState<number>(0);
   const [errors, setErrors] = useState<string | null>(null);
-  const router = useRouter();
 
   const updateApiCall = async () => {
     const res = await fetch(
@@ -26,7 +24,7 @@ export default function DepositForm({
     );
 
     if (res.status === 200) {
-      router.refresh();
+      alert(`Successfully deposited ${depositAmount}. Check Balance to see updated account info.`);
     } else {
       throw new Error("Submit Failed, Please Try Again");
     }

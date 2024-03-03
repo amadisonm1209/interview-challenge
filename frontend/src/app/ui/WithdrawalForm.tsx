@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type WithdrawalLedger = {
@@ -20,7 +19,6 @@ export default function WithdrawalForm({
 }) {
   const [withdrawalAmt, setWithdrawalAmt] = useState<number>(0);
   const [errors, setErrors] = useState<string | null>(null);
-  const router = useRouter();
 
   const updateApiCall = async () => {
     const res = await fetch(
@@ -42,7 +40,7 @@ export default function WithdrawalForm({
     );
 
     if (res.status === 200 && withdrawalRes.status === 200) {
-      router.refresh();
+      alert(`Successfully withdrew ${withdrawalAmt}. Check Balance to see updated account info.`);
     } else {
       throw new Error("Submit Failed, Please Try Again");
     }
